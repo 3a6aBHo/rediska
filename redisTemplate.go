@@ -9,6 +9,9 @@ import (
 type RedisClient struct {
 	Client *redis.Client
 }
+type OptionsRedis struct {
+	Options *redis.Options
+}
 
 // NewClient creates a new Redis client and returns a *RedisClient
 func NewClient(options *redis.Options) (*RedisClient, error) {
