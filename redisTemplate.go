@@ -13,14 +13,19 @@ type OptionsRedis struct {
 	Options *redis.Options
 }
 
-// NewClient creates a new Redis client and returns a *RedisClient
-func NewClient(options *redis.Options) (*RedisClient, error) {
-	client := redis.NewClient(options)
+func NewConnection(addr string, password string, db int) (*redis.Client, error) {
+	client := redis.NewClient(&redis.Options{
+		Addr:     addr,
+		Password: password, // no password set
+		DB:       db,       // use default DB
+	})
+
 	_, err := client.Ping().Result()
 	if err != nil {
 		return nil, err
 	}
-	return &RedisClient{Client: client}, nil
+
+	return client, nil
 }
 
 // Ping tests a connection to the Redis server.
