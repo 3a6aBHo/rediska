@@ -5,7 +5,6 @@ import (
 	"time"
 )
 
-// Client is a custom Redis client.
 type RedisClient struct {
 	Client *redis.Client
 }
