@@ -17,6 +17,11 @@ func NewRedisClient(redisURL string, password string, database int) *redis.Clien
 	})
 }
 
+// Ping tests a connection to the Redis server.
+func (c *Redis) Ping() (string, error) {
+	return c.Client.Ping().Result()
+}
+
 // Get gets the value of a key.
 func (c *Redis) Get(key string) (string, error) {
 	return c.Client.Get(key).Result()
