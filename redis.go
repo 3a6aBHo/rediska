@@ -32,6 +32,8 @@ func (s *RedisTemplate) Delete(key string) error {
 	err := s.Client.Del(key).Err()
 	return err
 }
+
+//ping function
 func (c *RedisTemplate) Ping() (string, error) {
 	return c.Client.Ping().Result()
 }
