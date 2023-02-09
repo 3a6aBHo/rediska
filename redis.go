@@ -9,6 +9,7 @@ type RedisTemplate struct {
 	Client *redis.Client
 }
 
+//Create new Redis client
 func NewRedisClient(url string, password string, db int) *RedisTemplate {
 	return &RedisTemplate{
 		Client: redis.NewClient(&redis.Options{
@@ -19,6 +20,7 @@ func NewRedisClient(url string, password string, db int) *RedisTemplate {
 	}
 }
 
+// Set sets the value of a key
 func (s *RedisTemplate) Set(key string, value string) error {
 	err := s.Client.Set(key, value, 0).Err()
 	return err
