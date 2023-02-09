@@ -43,7 +43,7 @@ func (c *Redis) Expire(key string, duration int64) error {
 }
 
 // TTL gets the remaining time to live of a key.
-func (c *Redis) TTL(key string) (int64, error) {
+func (c *Redis) TTL(key string) (time.Duration, error) {
 	return c.Client.TTL(key).Result()
 }
 
